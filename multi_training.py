@@ -5,7 +5,7 @@ import cPickle as pickle
 
 import signal
 
-batch_width = 10 # number of sequences in a batch
+batch_width = 5 # number of sequences in a batch
 batch_len = 16*8 # length of each sequence
 division_len = 16 # interval between possible start locations
 
@@ -25,6 +25,7 @@ def loadPieces(dirpath):
 
         pieces[name] = outMatrix
         print "Loaded {}".format(name)
+        print len(outMatrix)
 
     return pieces
 

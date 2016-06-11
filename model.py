@@ -118,6 +118,7 @@ class Model(object):
     @learned_config.setter
     def learned_config(self, learned_list):
         self.time_model.params = learned_list[0]
+        print self.time_model.params
         self.pitch_model.params = learned_list[1]
         for l, val in zip((l for mod in (self.time_model, self.pitch_model) for l in mod.layers if has_hidden(l)), learned_list[2]):
             l.initial_hidden_state.set_value(val.get_value())

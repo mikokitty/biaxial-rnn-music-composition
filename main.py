@@ -41,8 +41,10 @@ if __name__ == '__main__':
 
 	pcs = multi_training.loadPieces("music")
 
+	print "building model"
 	m = model.Model([300,300],[100,50], dropout=0.5)
 
-	multi_training.trainPiece(m, pcs, 10000)
+	print "start training"
+	multi_training.trainPiece(m, pcs, 1000)
 
 	pickle.dump( m.learned_config, open( "output/final_learned_config.p", "wb" ) )

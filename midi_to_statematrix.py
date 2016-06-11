@@ -1,7 +1,7 @@
 import midi, numpy
 
-lowerBound = 24
-upperBound = 102
+lowerBound = 36
+upperBound = 47
 
 def midiToNoteStateMatrix(midifile):
 
@@ -87,10 +87,10 @@ def noteStateMatrixToMidi(statematrix, name="example"):
             elif n[0] == 1:
                 onNotes.append(i)
         for note in offNotes:
-            track.append(midi.NoteOffEvent(tick=(time-lastcmdtime)*tickscale, pitch=note+lowerBound))
+            track.append(midi.NoteOffEvent(channel = 9, tick=(time-lastcmdtime)*tickscale, pitch=note+lowerBound))
             lastcmdtime = time
         for note in onNotes:
-            track.append(midi.NoteOnEvent(tick=(time-lastcmdtime)*tickscale, velocity=40, pitch=note+lowerBound))
+            track.append(midi.NoteOnEvent(channel = 9, tick=(time-lastcmdtime)*tickscale, velocity=40, pitch=note+lowerBound))
             lastcmdtime = time
             
         prevstate = state
